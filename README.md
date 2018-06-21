@@ -1,16 +1,18 @@
 # `mir_eval` evaluators
 
-This repository contains some example scripts for running `mir_eval`.
-They compute metrics according to reference and estimated annotation files that you provide.
-They can be used run from the command line, so that you don't have to write any code.
-To use these scripts, you'll need to install `mir_eval` first, for example by running `pip install mir_eval` or installing [from source](https://github.com/craffel/mir_eval/).
+This repository contains scripts which can be run from the command line and utilize `mir_eval` to compute metrics according to reference and estimated annotations you provide.
+To use the evaluators, you must first install `mir_eval` and its dependencies (see [here](https://craffel.github.io/mir_eval/#installing-mir-eval)).
 
 ## Usage
 
-To run an evaluator script `task_eval.py`, simply run
+By way of example, we'll cover the usage of the beat detection evaluator ``beat_eval``.
+To use an evaluator for a different task, simply replace ``beat_eval`` in the following with the name of the evaluator for the task you're interested in.
+To get usage help, simply run
 
-`./task_eval.py ref_file est_file arguments`
+`./beat_eval.py --help`
 
-For help,
+As an example, to evaluate generated beat times stored in the file `estimated_beats.txt` against ground-truth beats stored in the file `reference_beats.txt` and store the resulting scores in `results.json`, simply run
 
-`./task_eval.py --help`
+`./beat_eval.py -o results.json reference_beats.txt estimated_beats.txt`
+
+The file `results.json` will now contain the achieved scores in machine-parsable, human-readable json format.  Nice!
